@@ -58,7 +58,7 @@ public class Asignatura {
         {
             acumulador += calificaciones[i];  //acumulador = acumulador + calificaciones[i]  
         }
-        calificaciones[3] = acumulador/ 3.0 ;
+        calificaciones[3] = acumulador / (NUMERO_CALIFICACIONES - 1) ;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class Asignatura {
     {
         String cadena="";
         cadena = "Asignatura{" + "codigoasi=" + codigoasi + ", nombreasi=" + nombreasi + ", ";
-        for(int i = 0; i < NUMERO_CALIFICACIONES;i++)
+        for(int i = 0; i < NUMERO_CALIFICACIONES; i++)
         {
             cadena +=  "\n Evaluacion" + (i+1) + "="+ calificaciones[i] ;
         }
@@ -74,6 +74,10 @@ public class Asignatura {
         return cadena;
     }
     
+    public Double getNotaMedia()
+    {
+        return calificaciones[ NUMERO_CALIFICACIONES - 1];
+    }
     
     /**
      * @return the codigoasi

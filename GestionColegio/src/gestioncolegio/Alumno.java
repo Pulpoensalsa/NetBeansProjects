@@ -11,16 +11,25 @@ package gestioncolegio;
  * @author Alumnado
  */
 public class Alumno {
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
     
-       private static final int NUMERO_MAX_ASIGNATURAS = 5;
+       public static final int NUMERO_MAX_ASIGNATURAS = 5;
     
        private String nombre;
        private String apellido;
        private String dni;
-       private Asignatura[] evaluacion1;
-       private Asignatura[] evaluacion2;
-       private Asignatura[] evaluacion3;
-       private Asignatura[] evaluacionFinal;
+       private Asignatura[] asignaturas;
        
        
        public Alumno (String nombre, String apellido, String dni)
@@ -28,29 +37,38 @@ public class Alumno {
            this.nombre = nombre;
            this.dni = dni;
            this.apellido = apellido;
-           evaluacion1 = new Asignatura[NUMERO_MAX_ASIGNATURAS];
-           evaluacion2 = new Asignatura[NUMERO_MAX_ASIGNATURAS];
-           evaluacion3 = new Asignatura[NUMERO_MAX_ASIGNATURAS];
-           evaluacionFinal = new Asignatura[NUMERO_MAX_ASIGNATURAS];             
+           asignaturas = new Asignatura[NUMERO_MAX_ASIGNATURAS];                      
        }
        
-       public void anadirNotasEvaluacion ( int numEvaluacion, double nota1, double nota2, double nota3, double nota4, double nota5)
+       public void anadirNotasEvaluacionXAsignatura ( int numEvaluacion, double nota1, double nota2, double nota3, double nota4, double nota5)
        {
-           switch(numEvaluacion)
+           asignaturas[0].introducirNota(numEvaluacion, nota1);
+           asignaturas[1].introducirNota(numEvaluacion, nota2);
+           asignaturas[2].introducirNota(numEvaluacion, nota3);
+           asignaturas[3].introducirNota(numEvaluacion, nota4);
+           asignaturas[4].introducirNota(numEvaluacion, nota5);
+       }
+       
+       public void anadirNota (int numEvaluacion, double nota1, int numAsignatura)
+       {
+           asignaturas[numAsignatura].introducirNota(numEvaluacion, nota1);
+       }
+       
+      
+       public Double calcularNotaMedia ()
+       {
+           Double notaMedia = 0.0;
+           for (int i=0 ; i < asignaturas.length ; i++)
            {
-               case 1:
-                   break;
-               case 2:
-                   break;
-               case 3:
-                   break;
-               
+               notaMedia += asignaturas[i].getNotaMedia();
            }
+           
+           return (notaMedia / asignaturas.length) ;
        }
        
-       private void calcularNotaMedia ()
+       public String getAsignatura (int numAsig)
        {
-            
+           return asignaturas[numAsig].getNombreasi();
        }
        
 }
