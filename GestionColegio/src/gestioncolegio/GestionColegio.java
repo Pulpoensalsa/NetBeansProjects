@@ -19,7 +19,6 @@ public class GestionColegio {
         Asignatura asi1= new Asignatura("Mat014", "Matematicas");
         Asignatura asi2= new Asignatura("Len14", "Lengua");
         
-        
         asi1.introducirNota(1 , 7.0);
         asi1.introducirNota(2 , 3.0);
         asi1.introducirNota(3 , 2.0);
@@ -29,7 +28,6 @@ public class GestionColegio {
         asi2.introducirNota(3 , 9.0);
         
         asi1.introducirNota(1, 5.0);
-        
         
         System.out.println( asi1.toString() );
         System.out.println( asi2.toString() );
